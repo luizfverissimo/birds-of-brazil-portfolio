@@ -1,12 +1,9 @@
 import Head from 'next/head';
-import styled from 'styled-components'
+
+import BirdCard from '../components/BirdCard';
 import SideBar from '../components/SideBar';
 
-const Title = styled.h1`
-  color: var(--yellow);
-  font-size: 32px;
-`
-
+import * as S from '../styles/homeStyled'
 
 export default function Home() {
   return (
@@ -17,7 +14,10 @@ export default function Home() {
       </Head>
 
       <SideBar/>
-      <Title>Olá Mundão!</Title>
+      <S.contentWrapper>
+        <S.Title>Birds <br/> of Brazil</S.Title>
+        <BirdCard/>
+      </S.contentWrapper>
 
 
     </div>
