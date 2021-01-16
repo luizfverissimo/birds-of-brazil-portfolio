@@ -16,6 +16,7 @@ export const SideBarWrapper = styled.aside`
     justify-content: space-between;
     flex-direction: column;
     padding: 200px 37px 37px 37px;
+    z-index: 1;
 `
 
 export const SideBarTitleWrapper = styled.div`

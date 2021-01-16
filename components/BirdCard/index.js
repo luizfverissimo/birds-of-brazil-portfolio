@@ -2,12 +2,12 @@ import React from 'react'
 
 import * as S from './styled'
 
-function BirdCard() {
+function BirdCard({name, species, state}) {
   return (
     <S.cardWrapper>
-      <S.cardState>MS</S.cardState>
-      <S.cardTitle>Nome da espécie</S.cardTitle>
-      <S.cardSpecies>Nome da espécie</S.cardSpecies>
+      <S.cardState>{state}</S.cardState>
+      <S.cardTitle>{name}</S.cardTitle>
+      <S.cardSpecies>{species}</S.cardSpecies>
     </S.cardWrapper>
   )
 }

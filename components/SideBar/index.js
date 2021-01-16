@@ -18,7 +18,7 @@ function SideBar() {
         <S.FiveIcon size={36} />
         <S.EmailIcon size={36} />
         <S.WikiIconWrapper>
-          <Image src='/wikiaves.svg' width={42} height={42} />
+          <Image src='/wikiaves.svg' width={42} height={42} alt="logo wikiaves" />
         </S.WikiIconWrapper>
       </S.SideBarSocialIconsWrapper>
     </S.SideBarWrapper>

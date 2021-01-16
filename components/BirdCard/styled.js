@@ -11,6 +11,7 @@ export const cardWrapper = styled.div`
   position: relative;
   margin-right: 20px;
   margin-top: 20px;
+  z-index: 1;
 `
 
 export const cardTitle = styled.h3`
