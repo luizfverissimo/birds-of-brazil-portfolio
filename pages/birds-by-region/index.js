@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 
 import BirdCard from '../../components/BirdCard';
@@ -11,6 +11,8 @@ import * as S from '../../styles/birdsByRegionStyled';
 function BirdsByRegion({ birdsList }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [birdInfoModal, setBirdInfoModal] = useState({});
+  const [birdsListFiltered, setBirdsListFiltered] = useState([]);
+  const [activeRegion, setActiveRegion] = useState('All');
 
   const openDetailsModal = (birdInfo) => {
     setBirdInfoModal(birdInfo);
@@ -20,7 +22,25 @@ function BirdsByRegion({ birdsList }) {
 
   const closeDetailsModal = () => {
     setIsModalOpen(false);
-  }
+  };
+
+  useEffect(() => {
+    setBirdsListFiltered(birdsList);
+  }, []);
+
+  const filterBirdsList = (filter) => {
+    if (filter === 'All') {
+      setBirdsListFiltered(birdsList);
+      setActiveRegion(filter)
+      return;
+    }
+    const birdsFiltered = birdsList.filter(
+      (bird) => bird.attributes.region === filter
+    );
+    setBirdsListFiltered(birdsFiltered);
+    setActiveRegion(filter)
+    return;
+  };
 
   return (
     <>
@@ -42,7 +62,45 @@ function BirdsByRegion({ birdsList }) {
       )}
       <SideBar />
       <S.contentWrapper>
-        {birdsList.map((bird) => {
+        <S.RegionFilterWrapper>
+          <S.RegionFilterItems
+            active={activeRegion.match(/^All$/)}
+            onClick={() => filterBirdsList('All')}
+          >
+            All
+          </S.RegionFilterItems>
+          <S.RegionFilterItems
+            active={activeRegion.match(/^North$/)}
+            onClick={() => filterBirdsList('North')}
+          >
+            North
+          </S.RegionFilterItems>
+          <S.RegionFilterItems
+            active={activeRegion.match(/^Northeast$/)}
+            onClick={() => filterBirdsList('Northeast')}
+          >
+            Northeast
+          </S.RegionFilterItems>
+          <S.RegionFilterItems
+            active={activeRegion.match(/^Midwest$/)}
+            onClick={() => filterBirdsList('Midwest')}
+          >
+            Midwest
+          </S.RegionFilterItems>
+          <S.RegionFilterItems
+            active={activeRegion.match(/^Southeast$/)}
+            onClick={() => filterBirdsList('Southeast')}
+          >
+            Southeast
+          </S.RegionFilterItems>
+          <S.RegionFilterItems
+            active={activeRegion.match(/^South$/)}
+            onClick={() => filterBirdsList('South')}
+          >
+            South
+          </S.RegionFilterItems>
+        </S.RegionFilterWrapper>
+        {birdsListFiltered.map((bird) => {
           return (
             <BirdListItem
               key={bird.slug}
