@@ -13,7 +13,7 @@ function BirdListItem({ img, name, species, state, onClickOpenDetailsModal }) {
       onMouseLeave={() => setIsHovering(false)}
       onClick={onClickOpenDetailsModal}
     >
-      <Image src={img} width={500} height={400} objectFit='cover' />
+      <Image src={img.substr(7)} width={500} height={400} objectFit='cover' />
       <S.BirdCardWrapper>
         {isHovering && <BirdCard name={name} species={species} state={state} />}
       </S.BirdCardWrapper>
