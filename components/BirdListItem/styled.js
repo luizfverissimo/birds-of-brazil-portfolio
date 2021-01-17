@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
 export const BirdListItemWrapper = styled.div`
-  width: 400px;
+  width: auto;
+  max-width: 400px;
   height: auto;
   background-color: var(--lightGrey);
   overflow: hidden;
