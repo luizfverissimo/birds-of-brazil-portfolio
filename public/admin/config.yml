@@ -37,5 +37,6 @@ collections:
           label: 'Featured Image',
           name: 'img',
           widget: 'image',
-          required: true
+          required: true,
+          media_folder: /img
         }
