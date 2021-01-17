@@ -1,20 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 
 import BirdCard from '../../components/BirdCard';
 import SideBar from '../../components/SideBar';
 import BirdListItem from '../../components/BirdListItem';
+import BirdDetailsModal from '../../components/BirdDetailsModal';
 
 import * as S from '../../styles/birdsByRegionStyled';
 
 function BirdsByRegion({ birdsList }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [birdInfoModal, setBirdInfoModal] = useState({});
+
+  const openDetailsModal = (birdInfo) => {
+    setBirdInfoModal(birdInfo);
+    setIsModalOpen(true);
+    return;
+  };
+
+  const closeDetailsModal = () => {
+    setIsModalOpen(false);
+  }
+
   return (
     <>
       <Head>
         <title>LC Verissimo | Bird Photographer Portfolio</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
-
+      {isModalOpen && (
+        <BirdDetailsModal
+          name={birdInfoModal.title}
+          img={birdInfoModal.img}
+          species={birdInfoModal.species}
+          date={birdInfoModal.date}
+          city={birdInfoModal.city}
+          state={birdInfoModal.state}
+          region={birdInfoModal.region}
+          onClickCloseModal={() => closeDetailsModal()}
+        />
+      )}
       <SideBar />
       <S.contentWrapper>
         {birdsList.map((bird) => {
@@ -25,6 +50,7 @@ function BirdsByRegion({ birdsList }) {
               name={bird.attributes.title}
               species={bird.attributes.species}
               state={bird.attributes.state}
+              onClickOpenDetailsModal={() => openDetailsModal(bird.attributes)}
             />
           );
         })}
@@ -50,7 +76,6 @@ const importBirdsList = async () => {
 
 export async function getStaticProps() {
   const birdsList = await importBirdsList();
-  console.log(birdsList);
 
   return {
     props: {

@@ -1,6 +1,8 @@
 backend:
-  name: git-gateway
-  branch: master
+  name: github
+  repo: luizfverissimo/birds-of-brazil-portfolio
+  branch: main
+  site_domain: cms.netlify.com
 media_folder: public/img
 slug:
   encoding: 'ascii'
@@ -14,16 +16,26 @@ collections:
     slug: '{{year}}-{{month}}-{{day}}_{{slug}}'
     fields:
       - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Species', name: 'species', widget: 'string', required: true }
+      - { label: 'City', name: 'city', widget: 'string', required: true }
+      - { label: 'State', name: 'state', widget: 'string', required: true }
       - {
-          label: 'Publish Date',
+          label: 'Region',
+          name: 'region',
+          widget: 'select',
+          options: ['North', 'Northeast', 'Midwest', 'South east', 'South'],
+          required: true
+        }
+      - {
+          label: 'Photo taken date',
           name: 'date',
-          widget: 'datetime',
-          required: true,
+          widget: 'date',
+          format: 'MM/DD/YYYY',
+          required: true
         }
       - {
           label: 'Featured Image',
-          name: 'thumbnail',
+          name: 'img',
           widget: 'image',
-          required: true,
+          required: true
         }
-      - { label: 'Body', name: 'body', widget: 'markdown', required: true }
