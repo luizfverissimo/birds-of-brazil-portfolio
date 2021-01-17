@@ -3,7 +3,7 @@ backend:
   repo: luizfverissimo/birds-of-brazil-portfolio
   branch: main
   site_domain: cms.netlify.com
-media_folder: public/img
+media_folder: /img
 slug:
   encoding: 'ascii'
   clean_accents: true

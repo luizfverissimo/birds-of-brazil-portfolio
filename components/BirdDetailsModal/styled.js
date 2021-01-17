@@ -16,8 +16,8 @@ export const ModalBackground = styled.div`
 `
 
 export const ModalImgWrapper = styled.div`
-  width: 70vw;
-  height: 70vh;
+  width: 1000px;
+  height: 700px;
   overflow: hidden;
   position: relative;
 `
