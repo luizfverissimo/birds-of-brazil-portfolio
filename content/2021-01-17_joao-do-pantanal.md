@@ -1,5 +1,5 @@
 ---
-title: "joão-do-pantanal-2 "
+title: joão-do-pantanal
 species: Synallaxis albilora Pelzeln, 1856
 city: Miranda
 state: MS
