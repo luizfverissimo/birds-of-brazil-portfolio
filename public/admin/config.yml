@@ -2,10 +2,10 @@ backend:
   name: github
   repo: luizfverissimo/birds-of-brazil-portfolio
   branch: main
-  site_domain: https://lcverissimo.netlify.app
+  site_domain: lcverissimo.netlify.app
 media_folder: /public/img
-site_url: https://lcverissimo.netlify.app
-display_url: https://lcverissimo.netlify.app
+site_url: lcverissimo.netlify.app
+display_url: lcverissimo.netlify.app
 slug:
   encoding: 'ascii'
   clean_accents: true
