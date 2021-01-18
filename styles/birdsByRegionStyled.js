@@ -5,7 +5,7 @@ export const contentWrapper = styled.section`
   height: 100vh;
   margin-left: 320px;
   background-color: var(--darkGrey);
-  padding: 20px;
+  padding: 130px 20px 20px 20px;
   padding-right: 100px;
   display: flex;
   align-items: flex-start;
@@ -24,6 +24,10 @@ export const RegionFilterWrapper = styled.div`
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
+  position: fixed;
+  top: 30px;
+  z-index: 5;
+  box-shadow: 10px 10px 10px 0px rgba(0,0,0,0.25);
 `
 
 export const RegionFilterItems = styled.div`
