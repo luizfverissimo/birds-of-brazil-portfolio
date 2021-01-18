@@ -2,7 +2,6 @@ backend:
   name: github
   repo: luizfverissimo/birds-of-brazil-portfolio
   branch: main
-  site_domain: https://birds-of-brazil-portfolio.vercel.app
 media_folder: /public/img
 site_url: https://birds-of-brazil-portfolio.vercel.app
 display_url: https://birds-of-brazil-portfolio.vercel.app
