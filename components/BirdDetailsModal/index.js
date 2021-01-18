@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 
 import * as S from './styled';
 
@@ -16,7 +15,7 @@ function BirdDetailsModal({
   return (
     <S.ModalBackground onClick={onClickCloseModal}>
       <S.ModalImgWrapper>
-        <Image src={img.substr(7)} layout='fill' objectFit='contain' alt={name} />
+        <img src={img.substr(7)} layout='fill' style={{objectFit: 'contain'}} alt={name} />
       </S.ModalImgWrapper>
       <S.ModalCard>
         <S.ModalTitle>{name}</S.ModalTitle>

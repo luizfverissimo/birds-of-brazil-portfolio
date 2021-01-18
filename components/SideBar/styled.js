@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { FiveHundredPx } from '@styled-icons/boxicons-logos'
 import { EmailOutline } from '@styled-icons/evaicons-outline'
-import Image from 'next/image'
 
 export const SideBarWrapper = styled.aside`
     width: 320px;

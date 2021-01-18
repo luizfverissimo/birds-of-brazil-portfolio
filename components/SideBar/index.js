@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 
 import * as S from './styled';
@@ -27,7 +26,7 @@ function SideBar() {
         <S.FiveIcon size={36} />
         <S.EmailIcon size={36} />
         <S.WikiIconWrapper>
-          <Image
+          <img
             src='/assets/wikiaves.svg'
             width={42}
             height={42}

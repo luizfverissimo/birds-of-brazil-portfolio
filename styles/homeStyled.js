@@ -33,4 +33,5 @@ export const BackgroundImageWrapper = styled.div`
   z-index: -1;
   width: calc(100vw - 320px);
   height: 100vh;
+  overflow: hidden;
 `

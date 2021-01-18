@@ -21,6 +21,9 @@ export const ModalImgWrapper = styled.div`
   height: 700px;
   max-height: 700px;
   overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
   position: relative;
 `
 
