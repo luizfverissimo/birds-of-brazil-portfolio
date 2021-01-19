@@ -15,7 +15,7 @@ function BirdDetailsModal({
   return (
     <S.ModalBackground onClick={onClickCloseModal}>
       <S.ModalImgWrapper>
-        <img src={img.substr(7)} layout='fill' style={{objectFit: 'contain'}} alt={name} />
+        <S.ModalImage src={img.substr(7)} alt={name} />
       </S.ModalImgWrapper>
       <S.ModalCard>
         <S.ModalTitle>{name}</S.ModalTitle>

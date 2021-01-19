@@ -82,7 +82,7 @@ export const FilterMobileButton = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 15;
+  z-index: 9;
   position: fixed;
   bottom: 30px;
   right: 30px;
