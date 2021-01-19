@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import media from 'styled-media-query';
 
 export const contentWrapper = styled.section`
   width: calc(100vw - 320px);
@@ -12,6 +13,15 @@ export const contentWrapper = styled.section`
   align-items: flex-end;
   justify-content: flex-end;
   position: relative;
+
+  ${media.lessThan('large')`
+    width: 100vw;
+    height: calc(100vh - 100px);
+    margin-left: 0;
+    margin-top: 100px;
+    padding-right: 20px;
+    align-items: center;
+    `}
 `
 
 export const Title = styled.h1`
@@ -24,6 +34,12 @@ export const Title = styled.h1`
   text-align: right;
   text-shadow: 0px 4px 4px rgba(0,0,0,0.25);
   margin-bottom: 100px;
+
+  ${media.lessThan('large')`
+  font-size: 68px;
+  text-align: center;
+  margin-bottom: 20px;
+  `}
 `
 
 export const BackgroundImageWrapper = styled.div`
@@ -34,4 +50,15 @@ export const BackgroundImageWrapper = styled.div`
   width: calc(100vw - 320px);
   height: 100vh;
   overflow: hidden;
+
+  ${media.lessThan('large')`
+    width: 100vw;
+    height: calc(100vh - 100px);
+  `}
+`
+
+export const BackgroundImage = styled.img`
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 `

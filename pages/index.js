@@ -18,7 +18,7 @@ export default function Home() {
         <S.Title>Birds <br/> of Brazil</S.Title>
         <BirdCard name="arapaçu-beija-flor" species="Campylorhamphus trochilirostris (Lichtenstein, 1820)" state="MS"/>
         <S.BackgroundImageWrapper>
-          <img src="/assets/arepacu-bg.png" style={{objectFit: "cover", width: '100%'}} alt="Arapaçu-beija-flor Background Image"/>
+          <S.BackgroundImage src="/assets/arepacu-bg.png" alt="Arapaçu-beija-flor Background Image"/>
         </S.BackgroundImageWrapper>
       </S.contentWrapper>
     </>
