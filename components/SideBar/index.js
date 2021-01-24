@@ -23,13 +23,6 @@ function SideBar() {
         <S.SideBarNavigationItem>About me</S.SideBarNavigationItem>
       </S.SideBarNavigationWrapper>
       <S.SideBarSocialIconsWrapper>
-        <a
-          href='https://500px.com/p/luizcarlosverissimo?view=photos'
-          target='_black'
-          rel='noopener'
-        >
-          <S.FiveIcon size={36} />
-        </a>
         <S.EmailIcon size={36} />
         <S.WikiIconWrapper>
           <a

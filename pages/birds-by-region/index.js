@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 import SideBar from '../../components/SideBar';
 import BirdListItem from '../../components/BirdListItem';
 import BirdDetailsModal from '../../components/BirdDetailsModal';
 
 import * as S from '../../styles/birdsByRegionStyled';
+import { Letsencrypt } from 'styled-icons/simple-icons';
 
 function BirdsByRegion({ birdsList }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -13,6 +15,7 @@ function BirdsByRegion({ birdsList }) {
   const [birdsListFiltered, setBirdsListFiltered] = useState([]);
   const [activeRegion, setActiveRegion] = useState('All');
   const [isOpenFilterList, setIsOpenFilterList] = useState(true);
+  const [hasMore, setHasMore] = useState(true);
 
   const openDetailsModal = (birdInfo) => {
     setBirdInfoModal(birdInfo);
@@ -25,7 +28,9 @@ function BirdsByRegion({ birdsList }) {
   };
 
   useEffect(() => {
-    setBirdsListFiltered(birdsList);
+    const limitedArray = limitArrayLength(birdsList);
+    setBirdsListFiltered(limitedArray);
+
     if (window.innerWidth <= 768) {
       setIsOpenFilterList(false);
     }
@@ -33,15 +38,20 @@ function BirdsByRegion({ birdsList }) {
 
   const filterBirdsList = (filter) => {
     if (filter === 'All') {
-      setBirdsListFiltered(birdsList);
+      const limitedArray = limitArrayLength(birdsList);
+      setBirdsListFiltered(limitedArray);
       setActiveRegion(filter);
+      setHasMore(true)
       return;
     }
     const birdsFiltered = birdsList.filter(
       (bird) => bird.attributes.region === filter
     );
-    setBirdsListFiltered(birdsFiltered);
+    const limitedArray = limitArrayLength(birdsFiltered);
+    setBirdsListFiltered(limitedArray);
     setActiveRegion(filter);
+    if (limitedArray.length < 5) setHasMore(false)
+    if (limitedArray.length >= 5) setHasMore(true)
     return;
   };
 
@@ -49,11 +59,74 @@ function BirdsByRegion({ birdsList }) {
     setIsOpenFilterList(!isOpenFilterList);
   };
 
+  const limitArrayLength = (array) => {
+    let tempArray = [];
+    const limit = 4;
+    array.map((item, index) => {
+      if (index <= limit) {
+        tempArray.push(item);
+        return;
+      }
+    });
+    return tempArray;
+  };
+
+  const handleNextBirds = () => {
+    console.log('next');
+    const lastCursor = birdsListFiltered.length - 1;
+    const limit = 5;
+    const newEntries = lastCursor + limit;
+
+    let birdsFiltered = []
+    if(activeRegion === "All") {
+      birdsFiltered = birdsList
+    }
+    if(activeRegion !== "All") {
+      birdsFiltered = birdsList.filter(
+        (bird) => bird.attributes.region === activeRegion
+      );
+    }
+
+    let tempArray = [];
+    birdsFiltered.map((item, index) => {
+      if (index <= newEntries) {
+        tempArray.push(item);
+        return;
+      }
+    });
+    setBirdsListFiltered(tempArray);
+    console.log(tempArray)
+
+    
+    if (tempArray.length - 1 === newEntries) setHasMore(true)
+    if (tempArray.length - 1 < newEntries) setHasMore(false)
+
+    return;
+  };
+
   return (
     <>
       <Head>
         <title>LC Verissimo | Bird Photographer Portfolio</title>
         <link rel='icon' href='/favicon.ico' />
+        <meta
+          name='description'
+          content='LC Verissimo | Bird Photographer, Birds of Brazil - Birds by Region'
+        />
+        <meta name='robots' content='index, follow' />
+        <meta httpEquiv='Content-Type' content='text/html; charset=utf-8' />
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <meta name='twitter:card' value='summary'></meta>
+        <meta property='og:title' content='LC Verissimo | Bird Photographer' />
+        <meta property='og:type' content='article' />
+        <meta
+          property='og:url'
+          content='https://lcverissimo.netlify.app/birds-by-region'
+        />
+        <meta
+          property='og:description'
+          content='LC Verissimo | Bird Photographer, Birds of Brazil - Birds by Region'
+        />
       </Head>
       {isModalOpen && (
         <BirdDetailsModal
@@ -114,18 +187,38 @@ function BirdsByRegion({ birdsList }) {
           </S.RegionFilterWrapper>
         )}
 
-        {birdsListFiltered.map((bird) => {
-          return (
-            <BirdListItem
-              key={bird.slug}
-              img={bird.attributes.img}
-              name={bird.attributes.title}
-              species={bird.attributes.species}
-              state={bird.attributes.state}
-              onClickOpenDetailsModal={() => openDetailsModal(bird.attributes)}
-            />
-          );
-        })}
+        <InfiniteScroll
+          dataLength={birdsListFiltered.length}
+          next={handleNextBirds}
+          hasMore={hasMore}
+          loader={
+            <p style={{ textAlign: 'center', color: 'var(--white)' }}>
+              Loading more photos ...
+            </p>
+          }
+          endMessage={
+            <p style={{ textAlign: 'center', color: 'var(--white)' }}>
+              No more photos.
+            </p>
+          }
+        >
+          <S.BirdListItemWrapper>
+            {birdsListFiltered.map((bird) => {
+              return (
+                <BirdListItem
+                  key={bird.slug}
+                  img={bird.attributes.img}
+                  name={bird.attributes.title}
+                  species={bird.attributes.species}
+                  state={bird.attributes.state}
+                  onClickOpenDetailsModal={() =>
+                    openDetailsModal(bird.attributes)
+                  }
+                />
+              );
+            })}
+          </S.BirdListItemWrapper>
+        </InfiniteScroll>
       </S.contentWrapper>
     </>
   );

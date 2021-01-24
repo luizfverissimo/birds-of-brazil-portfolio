@@ -4,7 +4,8 @@ import { FilterAlt } from 'styled-icons/boxicons-regular/'
 
 export const contentWrapper = styled.section`
   width: calc(100vw - 320px);
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
   margin-left: 320px;
   background-color: var(--darkGrey);
   padding: 130px 20px 20px 20px;
@@ -14,11 +15,12 @@ export const contentWrapper = styled.section`
   justify-content: center;
   position: relative;
   flex-wrap: wrap;
-  overflow-y: scroll;
+  //overflow-y: scroll; - bugs with react-infinite-scroll
 
   ${media.lessThan('large')`
     width: 100vw;
-    height: calc(100vh - 100px);
+    height: auto;
+    min-height: 100vh;
     margin-left: 0;
     margin-top: 132px;
     padding: 20px;
@@ -91,4 +93,13 @@ export const FilterMobileButton = styled.div`
 
 export const FilterIcon = styled(FilterAlt)`
   color: var(--darkGrey);
+`
+
+export const BirdListItemWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+
 `

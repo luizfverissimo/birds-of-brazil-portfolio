@@ -6,7 +6,7 @@ import { EmailOutline } from '@styled-icons/evaicons-outline';
 export const SideBarWrapper = styled.aside`
   width: 320px;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0%;
   background-color: var(--lightGrey);
