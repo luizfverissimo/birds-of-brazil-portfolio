@@ -50,8 +50,8 @@ function BirdsByRegion({ birdsList }) {
     const limitedArray = limitArrayLength(birdsFiltered);
     setBirdsListFiltered(limitedArray);
     setActiveRegion(filter);
-    if (limitedArray.length < 5) setHasMore(false)
-    if (limitedArray.length >= 5) setHasMore(true)
+    if (limitedArray.length < 10) setHasMore(false)
+    if (limitedArray.length >= 10) setHasMore(true)
     return;
   };
 
@@ -61,7 +61,7 @@ function BirdsByRegion({ birdsList }) {
 
   const limitArrayLength = (array) => {
     let tempArray = [];
-    const limit = 4;
+    const limit = 9;
     array.map((item, index) => {
       if (index <= limit) {
         tempArray.push(item);
@@ -74,7 +74,7 @@ function BirdsByRegion({ birdsList }) {
   const handleNextBirds = () => {
     console.log('next');
     const lastCursor = birdsListFiltered.length - 1;
-    const limit = 5;
+    const limit = 10;
     const newEntries = lastCursor + limit;
 
     let birdsFiltered = []
