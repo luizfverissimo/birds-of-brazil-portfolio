@@ -6,6 +6,3 @@ Personal Portfolio, created with *React* with *Next.js*.
 </br>
 ## [Click here to launch the Portfolio](https://lcverissimo.netlify.app)
 </br>
-
-[<img src="/readme-img/lf-portfolio-desk.png" alt="Print Desktop" height="1000"/>]("https://github.com/luizfverissimo/offer-aggregator/blob/main/readme-img/lf-portfolio-desk.png") [<img src="/readme-img/lf-portfolio-mobile.jpg" alt="Print Mobile" height="1000"/>]("https://github.com/luizfverissimo/offer-aggregator/blob/main/readme-img/lf-portfolio-mobile.jpg")
-
